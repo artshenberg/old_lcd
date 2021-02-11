@@ -5,15 +5,17 @@
 
 nums = list(map(lambda x: int(x), ''.join(input().split())))
 
-width = int(input())
+width = int(input()) # changeable dimensions inputs by user
 height = 2 * width + 3
 
+# basic strings for digits
 tbl = ' ' + '-' * width + ' ' # top/center/bottom of digit
 cel = ' ' + ' ' * width + ' ' # center of digit
 lel = '|' + ' ' * width + ' ' # left side of digit
 rel = ' ' + ' ' * width + '|' # right side of digit
 bol = '|' + ' ' * width + '|' # both sides of digit
 
+# dictionary of basic print for digits
 digits = {
           0:[tbl, bol, cel, bol, tbl],
           1:[cel, rel, cel, rel, cel],
@@ -27,6 +29,7 @@ digits = {
           9:[tbl, bol, tbl, rel, tbl]
          }
 
+# changing dimensions of digits
 def sized(width, digits):
     if width > 1:
         for digit in digits:
@@ -36,11 +39,13 @@ def sized(width, digits):
                 digits[digit].insert(1, digits[digit][1])
     return digits
 
+# prints top and bottom borders
 def print_top_bottom(width, l = len(nums)):
     print('x', end = '')
     print('-' * l * (width + 3), end = '')
     print('x')
-    
+
+# prints digits and left&right borders
 def print_digits(height, nums, digits):
     for i in range(height):
         left_border = True
@@ -51,6 +56,7 @@ def print_digits(height, nums, digits):
             left_border = False
         print('|')
 
+# calls functions
 sized(width, digits)
 print_top_bottom(width)
 print_digits(height, nums, digits)
