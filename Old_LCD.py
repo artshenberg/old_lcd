@@ -3,50 +3,6 @@
 
 # In[18]:
 
-
-import matplotlib.pyplot as plt
-
-def collatz(number):
-    yield number
-    while number != 1:
-        if number % 2 == 0:
-            number //= 2
-            yield number
-        else:
-            number = number * 3 + 1
-            yield number
-            
-            
-def collatz_count(number):
-    collatz_max, counter = 0, 0
-    for i in collatz(number):
-        collatz_max += i
-        counter += 1
-    return collatz_max / counter, counter
-            
-number = int(input())
-
-print(*collatz_count(number))
-
-for i in range(1, number + 1):
-    print(*list(collatz(i)))
-
-'''    
-table = [(0, 0)]
-for i in range(1, 100):
-    table.append(collatz_count(i))
-    
-max_table = [i[0] for i in table]
-count_table = [i[1] for i in table]
-fig = plt.figure()
-graph1 = plt.plot(max_table, 'y')
-graph2 = plt.plot(count_table, 'b')
-'''
-
-
-# In[146]:
-
-
 nums = list(map(lambda x: int(x), ''.join(input().split())))
 
 width = int(input())
@@ -99,10 +55,3 @@ sized(width, digits)
 print_top_bottom(width)
 print_digits(height, nums, digits)
 print_top_bottom(width)
-
-
-# In[ ]:
-
-
-
-
